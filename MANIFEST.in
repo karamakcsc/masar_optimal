@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include masar_optimal *.css
+recursive-include masar_optimal *.csv
+recursive-include masar_optimal *.html
+recursive-include masar_optimal *.ico
+recursive-include masar_optimal *.js
+recursive-include masar_optimal *.json
+recursive-include masar_optimal *.md
+recursive-include masar_optimal *.png
+recursive-include masar_optimal *.py
+recursive-include masar_optimal *.svg
+recursive-include masar_optimal *.txt
+recursive-exclude masar_optimal *.pyc
