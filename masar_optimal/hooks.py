@@ -172,4 +172,14 @@ user_data_fields = [
 # auth_hooks = [
 # 	"masar_optimal.auth.validate"
 # ]
-
+fixtures = [
+    {"dt": "Custom Field", "filters": [
+        [
+            "name", "in", [
+		"Item-item_locations_section",
+		"Item-item_locations"
+            ]
+        ]
+    ]}
+]
+		         

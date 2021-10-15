@@ -1,0 +1,50 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2021-10-15 16:46:54.433587",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "warehouse_no",
+  "location_item"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "LOC-ITEM-.YYYY.-",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "warehouse_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Warehouse No",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "location_item",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Location Item"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2021-10-15 16:47:30.752230",
+ "modified_by": "Administrator",
+ "module": "Masar Optimal",
+ "name": "Item Location",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
