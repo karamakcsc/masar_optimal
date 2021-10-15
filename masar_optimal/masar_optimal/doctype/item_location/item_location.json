@@ -30,13 +30,15 @@
   {
    "fieldname": "item_location",
    "fieldtype": "Text",
+   "in_list_view": 1,
+   "in_preview": 1,
    "label": "Item Location"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2021-10-15 17:22:28.031450",
+ "modified": "2021-10-15 17:25:12.537677",
  "modified_by": "Administrator",
  "module": "Masar Optimal",
  "name": "Item Location",
