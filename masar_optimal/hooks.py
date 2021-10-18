@@ -177,9 +177,14 @@ fixtures = [
         [
             "name", "in", [
 		"Item-item_locations_section",
-		"Item-item_locations"
+		"Item-item_locations",
+		"POS Invoice-customer_desc",
+		"Item-item_price_section",
+		"Item-retail_price",
+		"Item-item_price_columc",
+		"Item-wholesale_price",
+		"POS Invoice-mode_of_payment"
             ]
         ]
     ]}
 ]
-		         
