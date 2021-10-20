@@ -1,15 +1,14 @@
 {
  "actions": [],
- "autoname": "naming_series:",
- "creation": "2021-10-15 16:46:54.433587",
+ "autoname": "field:warehouse_location",
+ "creation": "2021-10-20 23:32:34.853401",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
   "warehouse",
-  "item_location",
-  "is_default"
+  "warehouse_location"
  ],
  "fields": [
   {
@@ -17,24 +16,8 @@
    "fieldtype": "Select",
    "hidden": 1,
    "label": "Series",
-   "options": "LOC-ITEM-.YYYY.-",
+   "options": "LOC-WH-.YYYY.-",
    "set_only_once": 1
-  },
-  {
-   "fieldname": "item_location",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "in_preview": 1,
-   "label": "Item Location",
-   "options": "Warehouse Location"
-  },
-  {
-   "default": "0",
-   "fieldname": "is_default",
-   "fieldtype": "Check",
-   "in_list_view": 1,
-   "in_preview": 1,
-   "label": "Is Default"
   },
   {
    "fieldname": "warehouse",
@@ -43,17 +26,37 @@
    "in_preview": 1,
    "label": "Warehouse",
    "options": "Warehouse"
+  },
+  {
+   "fieldname": "warehouse_location",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Location",
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
- "istable": 1,
  "links": [],
- "modified": "2021-10-20 23:54:22.893545",
+ "modified": "2021-10-20 23:56:07.266698",
  "modified_by": "Administrator",
  "module": "Masar Optimal",
- "name": "Item Location",
+ "name": "Warehouse Location",
  "owner": "Administrator",
- "permissions": [],
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1

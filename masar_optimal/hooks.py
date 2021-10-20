@@ -97,6 +97,10 @@ app_license = "MIT"
 #	}
 # }
 
+doctype_js = {
+    "Item" : "custom/item/item.js"
+ }
+
 # Scheduled Tasks
 # ---------------
 
