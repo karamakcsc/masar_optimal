@@ -98,7 +98,8 @@ app_license = "MIT"
 # }
 
 doctype_js = {
-    "Item" : "custom/item/item.js"
+    "Item" : "custom/item/item.js",
+    "POS Invoice" : "custom/pos_invoice/pos_invoice.js"
  }
 
 # Scheduled Tasks
@@ -187,7 +188,7 @@ fixtures = [
 		"Item-retail_price",
 		"Item-item_price_columc",
 		"Item-wholesale_price",
-		"POS Invoice-mode_of_payment"
+        "POS Invoice-price_type"
             ]
         ]
     ]}
