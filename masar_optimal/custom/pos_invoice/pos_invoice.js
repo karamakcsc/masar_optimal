@@ -17,28 +17,29 @@ frappe.ui.form.on("POS Invoice","refresh", function(frm) {
      frm.toggle_display("ignore_pricing_rule", false);
 });
 
-
-frappe.ui.form.on("POS Invoice Item","item_code", function(frm,cdt,cdn) {
-  var d = locals[cdt][cdn];
-  frappe.call({
-            "method": "frappe.client.get",
-            args: {
-              doctype: "Item",
-              name: d.item_code
-            },
-            callback: function (data) {
-              if(frm.doc.price_type=="Retail"){
-                frappe.msgprint(data.message.item_group)
-                d.rate = 55
-            }
-          //   if(frm.doc.price_type="Wholesale"){
-          //   if(data.message.wholesale_price) {
-          //     d.rate = flt(data.message.wholesale_price)
-          //   }
-          // }
-          }
-          });
-});
+//
+// frappe.ui.form.on("POS Invoice Item","item_code", function(frm,cdt,cdn) {
+//   var d = locals[cdt][cdn];
+//   frappe.call({
+//             "method": "frappe.client.get",
+//             args: {
+//               doctype: "Item",
+//               name: d.item_code
+//             },
+//             callback: function (data) {
+//               if(frm.doc.price_type=="Retail"){
+//                 frappe.msgprint(data.message.item_group)
+//                 frappe.msgprint("Hi")
+//                 d.description = "Yasser"
+//             }
+//           //   if(frm.doc.price_type="Wholesale"){
+//           //   if(data.message.wholesale_price) {
+//           //     d.rate = flt(data.message.wholesale_price)
+//           //   }
+//           // }
+//           }
+//           });
+// });
 
 
   // if (frm.doc.price_type = "Retail"){
