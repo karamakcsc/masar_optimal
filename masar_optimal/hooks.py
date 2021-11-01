@@ -134,7 +134,7 @@ doctype_js = {
 # override_whitelisted_methods = {
 # 	"frappe.desk.doctype.event.event.get_events": "masar_optimal.event.get_events"
 # }
-override_whitelisted_methods = { "erpnext.stock.get_item_details.get_item_details" : "masar_optimal.custom.pos_invoice.pos_invoice.custom_get_item_details" }
+#override_whitelisted_methods = { "erpnext.stock.get_item_details.get_item_details" : "masar_optimal.custom.pos_invoice.pos_invoice.custom_get_item_details" }
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
@@ -187,7 +187,9 @@ fixtures = [
 		"Item-item_price_section",
 		"Item-retail_price",
 		"Item-item_price_columc",
-		"Item-wholesale_price"
+		"Item-wholesale_price",
+        "POS Invoice Item-wholesale_price",
+        "POS Invoice Item-retail_price"
             ]
         ]
     ]}

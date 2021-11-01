@@ -18,45 +18,91 @@ frappe.ui.form.on("POS Invoice","refresh", function(frm) {
 });
 
 //
-// frappe.ui.form.on("POS Invoice Item","item_code", function(frm,cdt,cdn) {
-//   var d = locals[cdt][cdn];
-//   frappe.call({
-//             "method": "frappe.client.get",
-//             args: {
-//               doctype: "Item",
-//               name: d.item_code
-//             },
-//             callback: function (data) {
-//               if(frm.doc.price_type=="Retail"){
-//                 frappe.msgprint(data.message.item_group)
-//                 frappe.msgprint("Hi")
-//                 d.description = "Yasser"
-//             }
-//           //   if(frm.doc.price_type="Wholesale"){
-//           //   if(data.message.wholesale_price) {
-//           //     d.rate = flt(data.message.wholesale_price)
-//           //   }
-//           // }
-//           }
-//           });
-// });
+
+frappe.ui.form.on("POS Invoice Item","item_code", function(frm,cdt,cdn) {
+  var d = locals[cdt][cdn];
+  if (d.item_code)  {
+    if(frm.doc.price_type=="Retail"){
+      frappe.call({
+            "method": "frappe.client.get",
+            args: {doctype: "Item",name: d.item_code},
+            callback: function (data) {d.margin_rate_or_amount = flt(data.message.retail_price)}
+          });
+        }
+    if(frm.doc.price_type=="Wholesale"){
+      frappe.call({
+            "method": "frappe.client.get",
+            args: {doctype: "Item",name: d.item_code},
+            callback: function (data) {d.margin_rate_or_amount = flt(data.message.wholesale_price)}
+          });
+        }
+
+    if(frm.doc.price_type=="Last Price"){
+      frappe.call({
+            "method": "masar_optimal.custom.pos_invoice.pos_invoice.get_last_price",
+            args: {item_code: d.item_code},
+            callback: function (last_price) {
+            d.margin_rate_or_amount = flt(last_price.message)}
+          });
+        }
+      }
+});
+
+frappe.ui.form.on("POS Invoice","price_type", function(frm) {
+  if (frm.doc.items.length >0) {
+    $.each(frm.doc.items, function(i, d) {
+    if (d.item_code)  {
+      if(frm.doc.price_type=="Retail"){
+        frappe.call({
+              "method": "frappe.client.get",
+              args: {doctype: "Item",name: d.item_code},
+              callback: function (data) {d.rate = flt(data.message.retail_price)}
+            });
+          }
+      if(frm.doc.price_type=="Wholesale"){
+        frappe.call({
+              "method": "frappe.client.get",
+              args: {doctype: "Item",name: d.item_code},
+              callback: function (data) {d.rate = flt(data.message.wholesale_price)}
+            });
+          }
+
+      if(frm.doc.price_type=="Last Price"){
+        frappe.call({
+              "method": "masar_optimal.custom.pos_invoice.pos_invoice.get_last_price",
+              args: {item_code: d.item_code},
+              callback: function (last_price) {
+              d.rate = flt(last_price.message)}
+            });
+          }
+      }
+    });
+
+  }
+
+});
 
 
-  // if (frm.doc.price_type = "Retail"){
-  //   // frappe.db.get_value("Item" ,{"name": d.item_code}, "retail_price",function(value){
-  //   //   d.rate = value.retail_price;
-  //   // });
-  //
-  //   d.rate = frappe.db.get_value("Item", d.item_code, "retail_price")
-  //   // frappe.db.get_value('Item', {'name': d.item_code}, 'retail_price',
-  //   // function(value) {
-  //   // frappe.msgprint(str(value))
-  //   // d.rate = value;
-  //   // }) ;
-  // }
-  // if (frm.doc.price_type = "Wholesale"){
-  //   frappe.db.get_value("Item" ,{"name": d.item_code}, "wholesale_price",function(value){
-  //     d.rate = value.retail_price;
-  //   });
-  // }
-// });
+frappe.ui.form.on("POS Invoice Item","item_code", function(frm,cdt,cdn) {
+  var d = locals[cdt][cdn];
+  if (d.item_code)  {
+
+      frappe.call({
+            "method": "frappe.client.get",
+            args: {doctype: "Item",name: d.item_code},
+            callback: function (data) {
+              d.retail_price = flt(data.message.retail_price)
+              d.wholesale_price = flt(data.message.wholesale_price)
+          }
+        });
+
+    }
+});
+
+
+
+frappe.ui.form.on("POS Invoice", {
+  onload: function(frm) {
+    frm.set_value("ignore_pricing_rule",1);
+  }
+});
