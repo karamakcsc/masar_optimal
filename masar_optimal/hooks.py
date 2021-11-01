@@ -189,7 +189,8 @@ fixtures = [
 		"Item-item_price_columc",
 		"Item-wholesale_price",
         "POS Invoice Item-wholesale_price",
-        "POS Invoice Item-retail_price"
+        "POS Invoice Item-retail_price",
+        "POS Invoice-price_type"
             ]
         ]
     ]}
