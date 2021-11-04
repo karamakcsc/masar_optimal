@@ -3,7 +3,7 @@ frappe.ui.form.on("POS Invoice","refresh", function(frm) {
      frm.toggle_display("accounting_dimensions_section", false);
      frm.toggle_display("address_and_contact", false);
      frm.toggle_display("sec_warehouse", false);
-     frm.toggle_display("update_stock", false);
+     //frm.toggle_display("update_stock", false);
      frm.toggle_display("pricing_rule_details", false);
      frm.toggle_display("packing_list", false);
      frm.toggle_display("time_sheet_list", false);
