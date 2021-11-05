@@ -99,8 +99,8 @@ app_license = "MIT"
 
 doctype_js = {
     "Item" : "custom/item/item.js",
-    "POS Invoice" : "custom/pos_invoice/pos_invoice.js"
-    #"Sales Invoice" : "custom/sales_invoice/sales_invoice.js"
+    "POS Invoice" : "custom/pos_invoice/pos_invoice.js",
+    "Sales Invoice" : "custom/sales_invoice/sales_invoice.js"
  }
 
 # Scheduled Tasks
