@@ -1,5 +1,5 @@
 frappe.ui.form.on("Sales Invoice","refresh", function(frm) {
-     frm.toggle_display("pos_profile", false);
+     //frm.toggle_display("pos_profile", false);
      frm.toggle_display("accounting_dimensions_section", false);
      frm.toggle_display("address_and_contact", false);
      frm.toggle_display("sec_warehouse", false);
@@ -12,7 +12,7 @@ frappe.ui.form.on("Sales Invoice","refresh", function(frm) {
      frm.toggle_display("sales_team_section_break", false);
      frm.toggle_display("subscription_section", false);
      frm.toggle_display("customer_po_details", false);
-     frm.toggle_display("is_pos", false);
+     //frm.toggle_display("is_pos", false);
      frm.toggle_display("selling_price_list", false);
      frm.toggle_display("ignore_pricing_rule", false);
 });
@@ -104,5 +104,7 @@ frappe.ui.form.on("Sales Invoice Item","item_code", function(frm,cdt,cdn) {
 frappe.ui.form.on("Sales Invoice", {
   onload: function(frm) {
     frm.set_value("ignore_pricing_rule",1);
+    frm.set_value("is_pos",1);
+    // frm.set_value("price_type","Retail");
   }
 });
