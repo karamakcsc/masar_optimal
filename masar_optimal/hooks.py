@@ -184,7 +184,7 @@ fixtures = [
             "name", "in", [
 		"Item-item_locations_section",
 		"Item-item_locations",
-		"POS Invoice-customer_desc",
+		"POS Invoice-customer_description",
 		"Item-item_price_section",
 		"Item-retail_price",
 		"Item-item_price_columc",
@@ -192,10 +192,19 @@ fixtures = [
         "POS Invoice Item-wholesale_price",
         "POS Invoice Item-retail_price",
         "POS Invoice-price_type",
-        "Sales Invoice-customer_desc",
+        "Sales Invoice-customer_description",
         "Sales Invoice Item-wholesale_price",
         "Sales Invoice Item-retail_price",
-        "Sales Invoice-price_type"
+        "Sales Invoice-price_type",
+        "Sales Invoice-plate_number",
+        "Sales Invoice-vin_no",
+        "Sales Invoice-speedometer",
+        "POS Invoice-customer_description",
+        "POS Invoice-plate_number",
+        "POS Invoice-vin_no",
+        "POS Invoice-speedometer",
+        "Customer-is_pos_customer",
+        "Sales Invoice-invoice_type",
             ]
         ]
     ]}

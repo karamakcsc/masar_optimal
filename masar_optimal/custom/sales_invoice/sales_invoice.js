@@ -1,5 +1,6 @@
+//Hide unneed columns
 frappe.ui.form.on("Sales Invoice","refresh", function(frm) {
-     //frm.toggle_display("pos_profile", false);
+     frm.toggle_display("pos_profile", false);
      frm.toggle_display("accounting_dimensions_section", false);
      frm.toggle_display("address_and_contact", false);
      frm.toggle_display("sec_warehouse", false);
@@ -12,13 +13,65 @@ frappe.ui.form.on("Sales Invoice","refresh", function(frm) {
      frm.toggle_display("sales_team_section_break", false);
      frm.toggle_display("subscription_section", false);
      frm.toggle_display("customer_po_details", false);
-     //frm.toggle_display("is_pos", false);
+     frm.toggle_display("is_pos", false);
      frm.toggle_display("selling_price_list", false);
      frm.toggle_display("ignore_pricing_rule", false);
 });
 
-//
+//Change Invoice Behavior based on invoice type
+frappe.ui.form.on("Sales Invoice","invoice_type", function(frm) {
 
+if (frm.doc.invoice_type == "Cash") {
+  frm.set_value('naming_series', 'ACC-Samer-SINV-.YYYY.-')
+  frm.set_value("is_pos",1);
+  refresh_field("naming_series");
+  frm.set_query("customer", function() {
+    return {
+      filters: [
+        ["Customer","is_pos_customer", "in", ["1"]]
+      ]
+    }
+  });
+  }
+else if (frm.doc.invoice_type == "Credit") {
+  frm.set_value('naming_series', 'ACC-SINV-.YYYY.-')
+  frm.set_value("is_pos",0);
+  frm.set_value("customer","");
+  refresh_field("naming_series");
+  frm.set_query("customer", function() {
+    return {
+      filters: [
+        ["Customer","is_pos_customer", "in", ["0"]]
+      ]
+    }
+  });
+}
+});
+
+frappe.ui.form.on("Sales Invoice", "customer", function(frm) {
+  if (frm.doc.invoice_type == "Cash") {
+      frm.set_query("customer", function() {
+      return {
+        filters: [
+          ["Customer","is_pos_customer", "in", ["1"]]
+        ]
+      }
+    });
+    }
+  else if (frm.doc.invoice_type == "Credit") {
+    frm.set_query("customer", function() {
+      return {
+        filters: [
+          ["Customer","is_pos_customer", "in", ["0"]]
+        ]
+      }
+    });
+  }
+  frm.refresh_field("customer");
+});
+
+
+//Set Price based on item code
 frappe.ui.form.on("Sales Invoice Item","item_code", function(frm,cdt,cdn) {
   var d = locals[cdt][cdn];
   if (d.item_code)  {
@@ -48,6 +101,7 @@ frappe.ui.form.on("Sales Invoice Item","item_code", function(frm,cdt,cdn) {
       }
 });
 
+//Set Price based on price type
 frappe.ui.form.on("Sales Invoice","price_type", function(frm) {
   if (frm.doc.items.length >0) {
     $.each(frm.doc.items, function(i, d) {
@@ -82,7 +136,7 @@ frappe.ui.form.on("Sales Invoice","price_type", function(frm) {
 
 });
 
-
+//Fetch Retail and wholesale price after aselecting item code
 frappe.ui.form.on("Sales Invoice Item","item_code", function(frm,cdt,cdn) {
   var d = locals[cdt][cdn];
   if (d.item_code)  {
@@ -97,14 +151,4 @@ frappe.ui.form.on("Sales Invoice Item","item_code", function(frm,cdt,cdn) {
         });
 
     }
-});
-
-
-
-frappe.ui.form.on("Sales Invoice", {
-  onload: function(frm) {
-    frm.set_value("ignore_pricing_rule",1);
-    frm.set_value("is_pos",1);
-    // frm.set_value("price_type","Retail");
-  }
 });
