@@ -22,7 +22,7 @@ frappe.ui.form.on("Sales Invoice","refresh", function(frm) {
 frappe.ui.form.on("Sales Invoice","invoice_type", function(frm) {
 
 if (frm.doc.invoice_type == "Cash") {
-  frm.set_value('naming_series', 'ACC-Samer-SINV-.YYYY.-')
+  frm.set_value('naming_series', 'ACC-SINV-CASH-.YYYY.-')
   frm.set_value("is_pos",1);
   refresh_field("naming_series");
   frm.set_query("customer", function() {
@@ -34,9 +34,10 @@ if (frm.doc.invoice_type == "Cash") {
   });
   }
 else if (frm.doc.invoice_type == "Credit") {
-  frm.set_value('naming_series', 'ACC-SINV-.YYYY.-')
+  frm.set_value('naming_series', 'ACC-SINV-CREDIT-.YYYY.-')
   frm.set_value("is_pos",0);
   frm.set_value("customer","");
+  frm.set_value("price_type","Wholesale");
   refresh_field("naming_series");
   frm.set_query("customer", function() {
     return {
