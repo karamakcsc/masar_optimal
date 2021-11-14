@@ -24,6 +24,7 @@ frappe.ui.form.on("Sales Invoice","invoice_type", function(frm) {
 if (frm.doc.invoice_type == "Cash") {
   frm.set_value('naming_series', 'ACC-SINV-CASH-.YYYY.-')
   frm.set_value("is_pos",1);
+  frm.set_value("price_type","Retail");
   refresh_field("naming_series");
   frm.set_query("customer", function() {
     return {
