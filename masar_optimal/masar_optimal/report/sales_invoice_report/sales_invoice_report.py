@@ -30,6 +30,6 @@ def get_columns():
 	   "Total Tax:Data:120",
 	   "Posting Date:150",
 	   "Posting Time:100",
-	   "Is Return:50",
+	   "Is Return:40",
 	   "User:150"
 	]
