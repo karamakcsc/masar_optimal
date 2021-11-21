@@ -34,13 +34,13 @@ def get_data(filters):
 def get_columns():
 	return [
 	   "Name: Link/Name:200",
-	   "Invoice Type:Data:150",
-	   "Customer Name:Data:200",
-	   "Total:Data:120",
-	   "Total Tax:Data:120",
-	   "Grand Total:Data:120",
-	   "Posting Date:150",
-	   "Posting Time:100",
-	   "Is Return:40",
+	   "Invoice Type: Data:100",
+	   "Customer Name: Data:200",
+	   "Total: Data:120",
+	   "Total Tax: Data:120",
+	   "Grand Total: Data:120",
+	   "Posting Date: Date/Posting Date:120",
+	   "Posting Time: Time/Posting Time:100",
+	   "Is Return: Check/Is Return:130",
 	   "User:150"
 	]

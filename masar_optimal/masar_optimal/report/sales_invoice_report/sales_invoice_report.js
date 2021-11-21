@@ -70,14 +70,14 @@ frappe.query_reports["Sales Invoice Report"] = {
 							"width": 100,
 							"reqd": 0,
 						},
-						// {
-						// 	"fieldname": "sales_person",
-						// 	"label": __("Sales Persone"),
-						// 	"fieldtype": "Link",
-						// 	"options": "Sales Person",
-						// 	"width": 100,
-						// 	"reqd": 0,
-						// },
+						{
+							"fieldname": "sales_person",
+							"label": __("Sales Persone"),
+							"fieldtype": "Link",
+							"options": "Sales Person",
+							"width": 100,
+							"reqd": 0,
+						},
 						{
 							"fieldname": "owner",
 							"label": __("User Name"),
