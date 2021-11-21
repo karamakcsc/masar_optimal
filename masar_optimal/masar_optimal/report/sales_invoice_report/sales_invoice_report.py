@@ -17,7 +17,7 @@ def get_data(filters):
 	# if(filters.get('item_code')):conditions += f" AND item_code='{filters.get('item_code')}' "
 	# print(f"\n\n\n\{conditions}\n\n\n\n")
 
-	data = frappe.db.sql("""SELECT name, invoice_type, customer_name, grand_total, total, total_taxes_and_charges, posting_date, owner, docstatus FROM `tabSales Invoice`;""")
+	data = frappe.db.sql("""SELECT name, invoice_type, customer_name, grand_total, total, total_taxes_and_charges, posting_date, owner FROM `tabSales Invoice`;""")
 	return data
 
 def get_columns():
