@@ -13,7 +13,7 @@ def get_data(filters):
     #Conditions
 	conditions = " AND 1=1 "
 	if(filters.get('name')):conditions += f" AND name LIKE '%{filters.get('name')}' "
-	if(filters.get('invoice_type')):conditions += f" AND name LIKE '%{filters.get('invoice_type')}' "
+	if(filters.get('invoice_type')):conditions += f" AND invoice_type='{filters.get('invoice_type')}' "
 	if(filters.get('customer_name')):conditions += f" AND customer_name LIKE '%{filters.get('customer_name')}' "
 	if(filters.get('sales_person')):conditions += f" AND sales_person='{filters.get('sales_person')}' "
 	if(filters.get('owner')):conditions += f" AND owner='{filters.get('owner')}' "
