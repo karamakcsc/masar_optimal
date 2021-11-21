@@ -1,7 +1,7 @@
 {
  "add_total_row": 1,
  "columns": [],
- "creation": "2021-11-21 12:44:26.040272",
+ "creation": "2021-11-22 01:32:49.186764",
  "disable_prepared_report": 0,
  "disabled": 0,
  "docstatus": 0,
@@ -9,14 +9,14 @@
  "filters": [],
  "idx": 0,
  "is_standard": "Yes",
- "modified": "2021-11-21 18:06:55.434529",
+ "modified": "2021-11-22 01:32:49.186764",
  "modified_by": "Administrator",
  "module": "Masar Optimal",
- "name": "Sales Invoice Report",
+ "name": "Optimal Sales Report",
  "owner": "Administrator",
  "prepared_report": 0,
  "ref_doctype": "Sales Invoice",
- "report_name": "Sales Invoice Report",
+ "report_name": "Optimal Sales Report",
  "report_type": "Script Report",
  "roles": [
   {

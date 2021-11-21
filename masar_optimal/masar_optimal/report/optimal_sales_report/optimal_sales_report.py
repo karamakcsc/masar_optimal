@@ -18,17 +18,17 @@ def get_data(filters):
 	if(filters.get('sales_person')):conditions += f" AND sales_person='{filters.get('sales_person')}' "
 	if(filters.get('owner')):conditions += f" AND owner='{filters.get('owner')}' "
 	if(filters.get('is_return')):conditions += f" AND is_return='{filters.get('is_return')}' "
-	if(filters.get('docstatus')):conditions += f" AND is_return='{filters.get('docstatus')}' "
-	#print(f"\n\n\n\{filters}\n\n\n\n")
-	# _creation = filters.get('creation'), filters.get('creation') #date range
-	# condition
-	# conditions = " AND 1=1 "
-	# if(filters.get('warehouse')):conditions += f" AND warehouse='{filters.get('warehouse')}' "
-	# if(filters.get('item_code')):conditions += f" AND item_code='{filters.get('item_code')}' "
-	# print(f"\n\n\n\{conditions}\n\n\n\n")
+	#if(filters.get('status')):conditions += f" AND status='{filters.get('status')}' "
 
 	#SQL Query
-	data = frappe.db.sql(f"""SELECT name, invoice_type, customer_name, total, total_taxes_and_charges, grand_total, posting_date, posting_time, is_return, owner FROM `tabSales Invoice` WHERE (posting_date BETWEEN '{_from}' AND '{to}') {conditions};""")
+	data = frappe.db.sql(f"""Select tsi.name, tsi.invoice_type, tsi.customer_name, tsi.total, tsi.total_taxes_and_charges, tsi.grand_total,
+									tsi.posting_date, tsi.posting_time, tsi.is_return,
+									IF(ISNULL(tst.sales_person) =0 ,tst.sales_person ,''),tsi.status,
+								    tsi.owner
+							FROM `tabSales Invoice` tsi
+							LEFT Join `tabSales Team` tst ON tsi.name =tst.parent and tst.parenttype = 'Sales Invoice'
+							WHERE (posting_date BETWEEN '{_from}' AND '{to}')
+							 {conditions};""")
 	return data
 
 def get_columns():
@@ -42,5 +42,7 @@ def get_columns():
 	   "Posting Date: Date/Posting Date:120",
 	   "Posting Time: Time/Posting Time:100",
 	   "Is Return: Check/Is Return:130",
+	   "Sales Person:150",
+	   "Status:150",
 	   "User:150"
 	]
