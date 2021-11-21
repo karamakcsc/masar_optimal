@@ -9,7 +9,17 @@ def execute(filters=None):
 	return get_columns(), get_data(filters)
 
 def get_data(filters):
-	print(f"\n\n\n\{filters}\n\n\n\n")
+	_from, to = filters.get('from'), filters.get('to') #date range
+    #Conditions
+	conditions = " AND 1=1 "
+	if(filters.get('name')):conditions += f" AND name LIKE '%{filters.get('name')}' "
+	if(filters.get('invoice_type')):conditions += f" AND name LIKE '%{filters.get('invoice_type')}' "
+	if(filters.get('customer_name')):conditions += f" AND customer_name='{filters.get('customer_name')}' "
+	if(filters.get('sales_person')):conditions += f" AND sales_person='{filters.get('sales_person')}' "
+	if(filters.get('owner')):conditions += f" AND owner='{filters.get('owner')}' "
+	if(filters.get('is_return')):conditions += f" AND is_return='{filters.get('is_return')}' "
+	if(filters.get('docstatus')):conditions += f" AND is_return='{filters.get('docstatus')}' "
+	#print(f"\n\n\n\{filters}\n\n\n\n")
 	# _creation = filters.get('creation'), filters.get('creation') #date range
 	# condition
 	# conditions = " AND 1=1 "
@@ -17,7 +27,8 @@ def get_data(filters):
 	# if(filters.get('item_code')):conditions += f" AND item_code='{filters.get('item_code')}' "
 	# print(f"\n\n\n\{conditions}\n\n\n\n")
 
-	data = frappe.db.sql("""SELECT name, invoice_type, customer_name, grand_total, total, total_taxes_and_charges, posting_date, posting_time, is_return, owner FROM `tabSales Invoice`;""")
+	#SQL Query
+	data = frappe.db.sql(f"""SELECT name, invoice_type, customer_name, total, total_taxes_and_charges, grand_total, posting_date, posting_time, is_return, owner FROM `tabSales Invoice` WHERE (posting_date BETWEEN '{_from}' AND '{to}') {conditions};""")
 	return data
 
 def get_columns():
@@ -25,9 +36,9 @@ def get_columns():
 	   "Name: Link/Name:200",
 	   "Invoice Type:Data:150",
 	   "Customer Name:Data:200",
-	   "Grand Total:Data:120",
 	   "Total:Data:120",
 	   "Total Tax:Data:120",
+	   "Grand Total:Data:120",
 	   "Posting Date:150",
 	   "Posting Time:100",
 	   "Is Return:40",
