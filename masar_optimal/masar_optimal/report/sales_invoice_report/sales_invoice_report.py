@@ -29,6 +29,5 @@ def get_columns():
 	   "Total:Data:150",
 	   "Total Tax:Data:150",
 	   "Posting Date:150",
-	   "User:150",
-	   "Status:150"
+	   "User:150"
 	]
