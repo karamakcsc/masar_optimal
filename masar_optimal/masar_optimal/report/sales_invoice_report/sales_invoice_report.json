@@ -1,5 +1,5 @@
 {
- "add_total_row": 0,
+ "add_total_row": 1,
  "columns": [],
  "creation": "2021-11-21 12:44:26.040272",
  "disable_prepared_report": 0,
@@ -9,7 +9,7 @@
  "filters": [],
  "idx": 0,
  "is_standard": "Yes",
- "modified": "2021-11-21 12:44:26.040272",
+ "modified": "2021-11-21 15:37:43.650560",
  "modified_by": "Administrator",
  "module": "Masar Optimal",
  "name": "Sales Invoice Report",
@@ -26,7 +26,13 @@
    "role": "Accounts Manager"
   },
   {
-   "role": "Employee Self Service"
+   "role": "Sales Manager"
+  },
+  {
+   "role": "Sales Master Manager"
+  },
+  {
+   "role": "Sales User"
   }
  ]
 }
