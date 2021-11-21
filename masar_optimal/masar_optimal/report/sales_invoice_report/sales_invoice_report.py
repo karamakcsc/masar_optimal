@@ -33,7 +33,7 @@ def get_data(filters):
 
 def get_columns():
 	return [
-	   "Name: Link/Name:200",
+	   "Name: Link/name:200",
 	   "Invoice Type: Data:100",
 	   "Customer Name: Data:200",
 	   "Total: Data:120",

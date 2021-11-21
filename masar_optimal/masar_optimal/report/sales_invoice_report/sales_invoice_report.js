@@ -7,7 +7,8 @@ frappe.query_reports["Sales Invoice Report"] = {
 							{
 							"fieldname": "name",
 							"label": __("ID"),
-							"fieldtype": "Data",
+							"fieldtype": "Link",
+							"options": "Sales Invoice",
 							"width": 100,
 							"reqd": 0,
 							},
