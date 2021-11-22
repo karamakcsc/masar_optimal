@@ -35,14 +35,14 @@ def get_columns():
 	return [
 	   "Name: Link/name:200",
 	   "Invoice Type: Data:100",
-	   "Customer Name: Data:200",
-	   "Total: Data:120",
-	   "Total Tax: Data:120",
-	   "Grand Total: Data:120",
+	   "Customer Name: Link/Customer:200",
+	   "Total: Currency:120",
+	   "Total Tax: Currency:120",
+	   "Grand Total: Currency:120",
 	   "Posting Date: Date/Posting Date:120",
 	   "Posting Time: Time/Posting Time:100",
 	   "Is Return: Check/Is Return:130",
-	   "Sales Person:150",
+	   "Sales Person: Link/Sales Person:150",
 	   "Status:150",
 	   "User:150"
 	]
