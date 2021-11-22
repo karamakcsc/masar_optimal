@@ -18,7 +18,7 @@ def get_data(filters):
 	if(filters.get('sales_person')):conditions += f" AND sales_person='{filters.get('sales_person')}' "
 	if(filters.get('owner')):conditions += f" AND owner='{filters.get('owner')}' "
 	if(filters.get('is_return')):conditions += f" AND is_return='{filters.get('is_return')}' "
-	if(filters.get('status')):conditions += f" AND status LIKE '%{filters.get('status')}' "
+	if(filters.get('status')):conditions += f" AND status='{filters.get('status')}' "
 
 	#SQL Query
 	data = frappe.db.sql(f"""Select tsi.name, tsi.invoice_type, tsi.customer_name, tsi.total, tsi.total_taxes_and_charges, tsi.grand_total,
