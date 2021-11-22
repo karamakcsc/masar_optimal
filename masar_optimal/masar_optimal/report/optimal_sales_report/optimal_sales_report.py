@@ -12,7 +12,7 @@ def get_data(filters):
 	_from, to = filters.get('from'), filters.get('to') #date range
     #Conditions
 	conditions = " AND 1=1 "
-	if(filters.get('name')):conditions += f" AND name LIKE '%{filters.get('name')}' "
+	if(filters.get('inv_no')):conditions += f" AND tsi.name LIKE '%{filters.get('inv_no')}' "
 	if(filters.get('invoice_type')):conditions += f" AND invoice_type='{filters.get('invoice_type')}' "
 	if(filters.get('customer_name')):conditions += f" AND customer_name LIKE '%{filters.get('customer_name')}' "
 	if(filters.get('sales_person')):conditions += f" AND sales_person='{filters.get('sales_person')}' "
@@ -33,7 +33,7 @@ def get_data(filters):
 
 def get_columns():
 	return [
-	   "Name: Link/name:200",
+	   "Name: Link/Sales Invoice:200",
 	   "Invoice Type: Data:100",
 	   "Customer Name: Link/Customer:200",
 	   "Total: Currency:120",

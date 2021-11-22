@@ -5,7 +5,7 @@
 frappe.query_reports["Optimal Sales Report"] = {
 	"filters": [
 							{
-								"fieldname": "name",
+								"fieldname": "inv_no",
 								"label": __("ID"),
 								"fieldtype": "Link",
 								"options": "Sales Invoice",
