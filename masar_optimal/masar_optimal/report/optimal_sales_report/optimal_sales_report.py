@@ -13,12 +13,12 @@ def get_data(filters):
     #Conditions
 	conditions = " AND 1=1 "
 	if(filters.get('inv_no')):conditions += f" AND tsi.name LIKE '%{filters.get('inv_no')}' "
-	if(filters.get('invoice_type')):conditions += f" AND invoice_type='{filters.get('invoice_type')}' "
-	if(filters.get('customer_name')):conditions += f" AND customer_name LIKE '%{filters.get('customer_name')}' "
-	if(filters.get('sales_person')):conditions += f" AND sales_person='{filters.get('sales_person')}' "
-	if(filters.get('owner')):conditions += f" AND owner='{filters.get('owner')}' "
-	if(filters.get('is_return')):conditions += f" AND is_return='{filters.get('is_return')}' "
-	if(filters.get('status')):conditions += f" AND status='{filters.get('status')}' "
+	if(filters.get('invoice_type')):conditions += f" AND tsi.invoice_type='{filters.get('invoice_type')}' "
+	if(filters.get('customer_name')):conditions += f" AND tsi.customer_name LIKE '%{filters.get('customer_name')}' "
+	if(filters.get('sales_person')):conditions += f" AND tst.sales_person='{filters.get('sales_person')}' "
+	if(filters.get('owner')):conditions += f" AND tsi.owner='{filters.get('owner')}' "
+	if(filters.get('is_return')):conditions += f" AND tsi.is_return='{filters.get('is_return')}' "
+	if(filters.get('status')):conditions += f" AND tsi.status='{filters.get('status')}' "
 
 	#SQL Query
 	data = frappe.db.sql(f"""Select tsi.name, tsi.invoice_type, tsi.customer_name, tsi.total, tsi.total_taxes_and_charges, tsi.grand_total,
