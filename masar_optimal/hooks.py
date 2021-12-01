@@ -100,7 +100,8 @@ app_license = "MIT"
 doctype_js = {
     "Item" : "custom/item/item.js",
     "POS Invoice" : "custom/pos_invoice/pos_invoice.js",
-    "Sales Invoice" : "custom/sales_invoice/sales_invoice.js"
+    "Sales Invoice" : "custom/sales_invoice/sales_invoice.js",
+    "Payment Entry" : "custom/payment_entry/payment_entry.js"
  }
 
 # Scheduled Tasks
@@ -205,6 +206,7 @@ fixtures = [
         "POS Invoice-speedometer",
         "Customer-is_pos_customer",
         "Sales Invoice-invoice_type",
+        "Journal Entry Account-accounting_description",
             ]
         ]
     ]}
