@@ -206,9 +206,7 @@ fixtures = [
         "POS Invoice-speedometer",
         "Customer-is_pos_customer",
         "Sales Invoice-invoice_type",
-        "Journal Entry Account-accounting_description",
-        "Payment Entry-payment_type",
-        "Payment Entry-naming_series"
+        "Journal Entry Account-accounting_description"
             ]
         ]
     ]}
