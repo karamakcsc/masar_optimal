@@ -154,3 +154,12 @@ frappe.ui.form.on("Sales Invoice Item","item_code", function(frm,cdt,cdn) {
 
     }
 });
+
+frappe.ui.form.on("Sales Invoice", "onload", function(frm) {
+    //function custom_print(frm){
+     cur_frm.add_custom_button(__("Siam"), function() {
+         //cur_frm.set_value("Sales-Inv Print")
+         cur_frm.print_doc();
+     });
+//}
+});
