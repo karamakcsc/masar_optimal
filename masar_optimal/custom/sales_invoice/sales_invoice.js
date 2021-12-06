@@ -154,12 +154,9 @@ frappe.ui.form.on("Sales Invoice Item","item_code", function(frm,cdt,cdn) {
 
     }
 });
-
-// frappe.ui.form.on("Sales Invoice", "onload", function(frm) {
-//     //function custom_print(frm){
-//      cur_frm.add_custom_button(__("Siam"), function() {
-//          //cur_frm.set_value("Sales-Inv Print")
-//          cur_frm.print_doc();
-//      });
-// //}
-// });
+frappe.ui.form.on("Sales Invoice", "onload", function(frm) {
+     cur_frm.add_custom_button(__("Direct Print"), function() {
+         //var myWin = window.open('http://104.131.91.208:8000/api/method/frappe.utils.print_format.download_pdf?doctype=Sales%20Invoice&name='+cur_frm.doc.name+'&format=Sales-Inv%20Print&no_letterhead=1&letterhead=No%20Letterhead&settings=%7B%7D&_lang=en'); // for Direct download_pdf
+         var myWin = window.open('http://104.131.91.208:8000/printview?doctype=Sales%20Invoice&name='+cur_frm.doc.name+'&trigger_print=1&format=Sales-Inv%20Print&no_letterhead=1&letterhead=No%20Letterhead&settings=%7B%7D&_lang=en'); // for Direct Spacific Print Format
+    });
+});
