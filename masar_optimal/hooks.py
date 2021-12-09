@@ -199,7 +199,7 @@ fixtures = [
         "Sales Invoice-price_type",
         "Sales Invoice-plate_number",
         "Sales Invoice-vin_no",
-        "Sales Invoice-speedometer",
+        "Sales Invoice-odometer",
         "POS Invoice-customer_description",
         "POS Invoice-plate_number",
         "POS Invoice-vin_no",
