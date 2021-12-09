@@ -25,7 +25,7 @@ refresh: function(frm){
        frm.toggle_display("hub_publishing_sb", false);
        frm.toggle_display("is_item_from_hub", false);
        frm.toggle_display("include_item_in_manufacturing", false);
-       
+
 // Hide Links in Connections Section
 // setTimeout(() => {
 //     $("[data-doctype='BOM']").hide();
@@ -75,4 +75,17 @@ frappe.ui.form.on("Item", {
     }
     });
   }
+});
+
+frappe.ui.form.on("Item", "onload", function(frm,cdt,cdn) {
+  $('input[data-fieldname="retail_price"]')
+  $('input[data-fieldname="retail_price"]').val()
+  $('input[data-fieldname="retail_price"]').css("color","blue")
+  $('input[data-fieldname="retail_price"]').css("background-color","#FFE4C4")
+});
+frappe.ui.form.on("Item", "onload", function(frm,cdt,cdn) {
+  $('input[data-fieldname="wholesale_price"]')
+  $('input[data-fieldname="wholesale_price"]').val()
+  $('input[data-fieldname="wholesale_price"]').css("color","red")
+  $('input[data-fieldname="wholesale_price"]').css("background-color","#fcddae")
 });
