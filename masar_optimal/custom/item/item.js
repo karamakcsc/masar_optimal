@@ -25,30 +25,32 @@ refresh: function(frm){
        frm.toggle_display("hub_publishing_sb", false);
        frm.toggle_display("is_item_from_hub", false);
        frm.toggle_display("include_item_in_manufacturing", false);
-
+ }
+  if(frm.doc.allow_alternative_item == 1){
+      cur_frm.dashboard.show()
 // Hide Links in Connections Section
-// setTimeout(() => {
-//     $("[data-doctype='BOM']").hide();
-//     $("[data-doctype='Product Bundle']").hide()
-//     $("[data-doctype='Item Price']").hide()
-//     $("[data-doctype='Pricing Rule']").hide()
-//     $("[data-doctype='Quotation']").hide()
-//     $("[data-doctype='Sales Order']").hide()
-//     $("[data-doctype='Delivery Note']").hide()
-//     $("[data-doctype='Sales Invoice']").hide()
-//     $("[data-doctype='Serial No']").hide()
-//     $("[data-doctype='Batch']").hide()
-//     $("[data-doctype='Production Plan']").hide()
-//     $("[data-doctype='Work Order']").hide()
-//     $("[data-doctype='Item Manufacturer']").hide()
-//     $("[data-doctype='Material Request']").hide()
-//     $("[data-doctype='Supplier Quotation']").hide()
-//     $("[data-doctype='Request for Quotation']").hide()
-//     $("[data-doctype='Purchase Order']").hide()
-//     $("[data-doctype='Purchase Receipt']").hide()
-//     $("[data-doctype='Purchase Invoice']").hide()
-//     $("[data-doctype='Stock Entry']").hide()
-//         }, 10);
+      setTimeout(() => {
+          $("[data-doctype='BOM']").hide();
+          $("[data-doctype='Product Bundle']").hide()
+          $("[data-doctype='Item Price']").hide()
+          $("[data-doctype='Pricing Rule']").hide()
+          $("[data-doctype='Quotation']").hide()
+          $("[data-doctype='Sales Order']").hide()
+          $("[data-doctype='Delivery Note']").hide()
+          $("[data-doctype='Sales Invoice']").hide()
+          $("[data-doctype='Serial No']").hide()
+          $("[data-doctype='Batch']").hide()
+          $("[data-doctype='Production Plan']").hide()
+          $("[data-doctype='Work Order']").hide()
+          $("[data-doctype='Item Manufacturer']").hide()
+          $("[data-doctype='Material Request']").hide()
+          $("[data-doctype='Supplier Quotation']").hide()
+          $("[data-doctype='Request for Quotation']").hide()
+          $("[data-doctype='Purchase Order']").hide()
+          $("[data-doctype='Purchase Receipt']").hide()
+          $("[data-doctype='Purchase Invoice']").hide()
+          $("[data-doctype='Stock Entry']").hide()
+             }, 10);
 }
 }
 });
