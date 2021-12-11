@@ -101,7 +101,8 @@ doctype_js = {
     "Item" : "custom/item/item.js",
     "POS Invoice" : "custom/pos_invoice/pos_invoice.js",
     "Sales Invoice" : "custom/sales_invoice/sales_invoice.js",
-    "Payment Entry" : "custom/payment_entry/payment_entry.js"
+    "Payment Entry" : "custom/payment_entry/payment_entry.js",
+    "Landed Cost Voucher" : "custom/landed_cost_voucher/landed_cost_voucher.js"
  }
 
 # Scheduled Tasks
@@ -206,7 +207,9 @@ fixtures = [
         "POS Invoice-odometer",
         "Customer-is_pos_customer",
         "Sales Invoice-invoice_type",
-        "Journal Entry Account-accounting_description"
+        "Journal Entry Account-accounting_description",
+        "Landed Cost Item-percentage",
+        "Landed Cost Voucher-distribute_charges_based_percent"
             ]
         ]
     ]}
