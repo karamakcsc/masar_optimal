@@ -209,7 +209,7 @@ fixtures = [
         "Sales Invoice-invoice_type",
         "Journal Entry Account-accounting_description",
         "Landed Cost Item-percentage",
-        "Landed Cost Voucher-distribute_charges_based_percent"
+        "Landed Cost Voucher-distribute_charges_based_percent",
             ]
         ]
     ]}
