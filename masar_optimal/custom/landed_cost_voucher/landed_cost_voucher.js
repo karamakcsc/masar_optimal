@@ -12,3 +12,13 @@ distribute_charges_based_percent: function(frm){
 
   }
 });
+frappe.ui.form.on("Landed Cost Voucher", "applicable_charges",{distribute_charges_based_percent : function(frm, cdt, cdn) {
+var applicable_charges = frm.doc.purchase_receipts;
+   var total = 0
+   for(var i in applicable_charges) {
+	total = total + applicable_charges[i].applicable_charges
+	}
+
+	frm.set_value("amount",total)
+}
+});

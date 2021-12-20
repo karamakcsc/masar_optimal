@@ -7,3 +7,7 @@ frappe.ui.form.on("Payment Entry","payment_type", function(frm) {
       frm.set_value('naming_series', 'Tran-.YYYY.-');
   }
 });
+
+// frappe.ui.form.on("Payment Entry","refresh", function(frm) {
+//      frm.toggle_display("posting_date", false);
+//      });
