@@ -41,7 +41,7 @@ def get_columns():
 	   "Reference Number: Data:200",
 	   # "Payment Type: Data:120",
 	   # "Party Type: Data:150",
-	   "Party Name: Data:190",
+	   "Party Name: Link/Customer:200",
 	   "Mode of Payment: Data:100",
 	   # "Posting Date: Date:120",
 	   "Paid Amount: Currency:120",
