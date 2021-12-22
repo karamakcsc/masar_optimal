@@ -11,3 +11,12 @@ frappe.ui.form.on("Payment Entry","payment_type", function(frm) {
 // frappe.ui.form.on("Payment Entry","refresh", function(frm) {
 //      frm.toggle_display("posting_date", false);
 //      });
+
+frappe.ui.form.on("Payment Entry",{ before_load:function(frm) {
+  var df=frappe.meta.get_docfield("Payment Entry", "naming_series",frm.doc.name);
+  df.default="PAY-.YYYY.-";
+  var df=frappe.meta.get_docfield("Payment Entry", "payment_type",frm.doc.name);
+  df.default="Pay";
+frm.refresh_fields();
+}
+});
