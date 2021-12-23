@@ -6,7 +6,7 @@ refresh: function(frm){
        frm.toggle_display("reorder_section", false);
        frm.toggle_display("inventory_section", false);
        frm.toggle_display("barcodes", false);
-       frm.toggle_display("section_break_11", false);
+       frm.toggle_display("description", false);
        frm.toggle_display("item_locations_section", false);
        frm.toggle_display("unit_of_measure_conversion", false);
        frm.toggle_display("serial_nos_and_batches", false);
