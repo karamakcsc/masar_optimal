@@ -92,7 +92,6 @@ frappe.ui.form.on("Item", "onload", function(frm,cdt,cdn) {
   $('input[data-fieldname="wholesale_price"]').css("background-color","#fcddae")
 });
 
-
 frappe.ui.form.on("Item",{ before_load:function(frm) {
   if(user=="ghaith@optimal-motor.com"){
   var df=frappe.meta.get_docfield("Item", "section_break_11",frm.doc.name);
