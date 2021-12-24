@@ -22,3 +22,21 @@ frappe.ui.form.on("Payment Entry",{ before_load:function(frm) {
 frm.refresh_fields();
 }
 });
+
+frappe.ui.form.on("Payment Entry","party", function(frm) {
+    frappe.call({
+      method: "frappe.client.get",
+      args: {
+          name: frm.doc.party,
+          doctype: "Customer"
+      },
+      callback(r) {
+          if (r.message) {
+             var sales_team = r.message.sales_team
+             for(var i in sales_team) {
+                  frm.set_value('sales_person', sales_team[i].sales_person);
+              }
+            }
+          }
+  });
+});
