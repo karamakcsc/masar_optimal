@@ -210,7 +210,8 @@ fixtures = [
         "Journal Entry Account-accounting_description",
         "Landed Cost Item-percentage",
         "Landed Cost Voucher-distribute_charges_based_percent",
-        "Payment Entry-ref_number"
+        "Payment Entry-ref_number",
+        "Payment Entry-sales_person"
             ]
         ]
     ]}
