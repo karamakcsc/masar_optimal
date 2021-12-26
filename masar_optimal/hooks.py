@@ -184,8 +184,8 @@ fixtures = [
     {"dt": "Custom Field", "filters": [
         [
             "name", "in", [
-		"Item-item_locations_section",
-		"Item-item_locations",
+		#"Item-item_locations_section",
+		#"Item-item_locations",
 		"POS Invoice-customer_description",
 		# "Item-item_price_section",
 		"Item-retail_price",
