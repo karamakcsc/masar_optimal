@@ -18,6 +18,13 @@ frappe.ui.form.on("Sales Invoice","refresh", function(frm) {
      frm.toggle_display("ignore_pricing_rule", false);
 });
 
+frappe.ui.form.on("Sales Invoice",{ before_load:function(frm) {
+  var df=frappe.meta.get_docfield("Sales Invoice", "naming_series",frm.doc.name);
+  df.read_only=1;
+frm.refresh_fields();
+}
+});
+
 //Change Invoice Behavior based on invoice type
 frappe.ui.form.on("Sales Invoice","invoice_type", function(frm) {
 
