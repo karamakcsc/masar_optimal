@@ -43,7 +43,7 @@ if (frm.doc.invoice_type == "Cash") {
   }
 else if (frm.doc.invoice_type == "Credit") {
   frm.set_value('naming_series', 'ACC-SINV-CREDIT-.YYYY.-')
-  frm.set_value("is_pos",0);
+  frm.set_value("is_pos",1);
   frm.set_value("customer","");
   frm.set_value("price_type","Wholesale");
   refresh_field("naming_series");
