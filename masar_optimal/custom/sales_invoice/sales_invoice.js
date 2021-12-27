@@ -1,21 +1,28 @@
 //Hide unneed columns
 frappe.ui.form.on("Sales Invoice","refresh", function(frm) {
      frm.toggle_display("pos_profile", false);
-     frm.toggle_display("accounting_dimensions_section", false);
-     frm.toggle_display("address_and_contact", false);
+     frm.toggle_display("payment_schedule_section", false);
+     frm.toggle_display("section_break_49", false);
      frm.toggle_display("sec_warehouse", false);
      frm.toggle_display("update_stock", false);
-     frm.toggle_display("pricing_rule_details", false);
-     frm.toggle_display("packing_list", false);
-     frm.toggle_display("time_sheet_list", false);
-     frm.toggle_display("pricing_rule_details", false);
-     frm.toggle_display("loyalty_points_redemption", false);
-     frm.toggle_display("sales_team_section_break", false);
+     frm.toggle_display("currency_and_price_list", false);
+     frm.toggle_display("payments_section", false);
+     frm.toggle_display("section_break_88", false);
+     frm.toggle_display("edit_printing_settings", false);
+     frm.toggle_display("section_break_84", false);
      frm.toggle_display("subscription_section", false);
+     frm.toggle_display("sales_team_section_break", false);
      frm.toggle_display("customer_po_details", false);
      frm.toggle_display("is_pos", false);
-     frm.toggle_display("selling_price_list", false);
-     frm.toggle_display("ignore_pricing_rule", false);
+     frm.toggle_display("more_information", false);
+     frm.toggle_display("more_info", false);
+     frm.toggle_display("terms_section_break", false);
+     frm.toggle_display("column_break_77", false);
+     frm.toggle_display("column_break4", false);
+     frm.toggle_display("time_sheet_list", false);
+     frm.toggle_display("loyalty_points_redemption", false);
+     frm.toggle_display("accounting_dimensions_section", false);
+     frm.toggle_display("address_and_contact", false);
 });
 
 frappe.ui.form.on("Sales Invoice",{ before_load:function(frm) {
