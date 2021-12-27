@@ -4,7 +4,7 @@ frappe.ui.form.on("Sales Invoice","refresh", function(frm) {
      frm.toggle_display("accounting_dimensions_section", false);
      frm.toggle_display("address_and_contact", false);
      frm.toggle_display("sec_warehouse", false);
-     //frm.toggle_display("update_stock", false);
+     frm.toggle_display("update_stock", false);
      frm.toggle_display("pricing_rule_details", false);
      frm.toggle_display("packing_list", false);
      frm.toggle_display("time_sheet_list", false);
@@ -43,7 +43,7 @@ if (frm.doc.invoice_type == "Cash") {
   }
 else if (frm.doc.invoice_type == "Credit") {
   frm.set_value('naming_series', 'ACC-SINV-CREDIT-.YYYY.-')
-  frm.set_value("is_pos",1);
+  frm.set_value("is_pos",0);
   frm.set_value("customer","");
   frm.set_value("price_type","Wholesale");
   refresh_field("naming_series");
@@ -164,6 +164,12 @@ frappe.ui.form.on("Sales Invoice Item","item_code", function(frm,cdt,cdn) {
 frappe.ui.form.on("Sales Invoice", "on_submit", function(frm) {
      //cur_frm.add_custom_button(__("Direct Print"), function() {
          //var myWin = window.open('http://104.131.91.208:8000/api/method/frappe.utils.print_format.download_pdf?doctype=Sales%20Invoice&name='+cur_frm.doc.name+'&format=Sales-Inv%20Print&no_letterhead=1&letterhead=No%20Letterhead&settings=%7B%7D&_lang=en'); // for Direct download_pdf
-         var myWin = window.open('https://167.172.226.69/printview?doctype=Sales%20Invoice&name='+cur_frm.doc.name+'&trigger_print=1&format=Sales-Inv%20Print&no_letterhead=1&letterhead=No%20Letterhead&settings=%7B%7D&_lang=en'); // for Direct Spacific Print Format
+         var myWin = window.open('https://157.245.118.117/printview?doctype=Sales%20Invoice&name='+cur_frm.doc.name+'&trigger_print=1&format=Sales-Inv%20Print&no_letterhead=1&letterhead=No%20Letterhead&settings=%7B%7D&_lang=en'); // for Direct Spacific Print Format
     //});
+});
+
+frappe.ui.form.on("Sales Invoice", {
+  onload: function(frm) {
+    frm.set_value("update_stock",1);
+  }
 });
