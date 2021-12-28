@@ -23,6 +23,7 @@ frappe.ui.form.on("Sales Invoice","refresh", function(frm) {
      frm.toggle_display("loyalty_points_redemption", false);
      frm.toggle_display("accounting_dimensions_section", false);
      frm.toggle_display("address_and_contact", false);
+     frm.toggle_display("disable_rounded_total", false);
 });
 
 frappe.ui.form.on("Sales Invoice",{ before_load:function(frm) {
