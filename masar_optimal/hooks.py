@@ -212,7 +212,8 @@ fixtures = [
         "Landed Cost Voucher-distribute_charges_based_percent",
         "Payment Entry-ref_number",
         "Payment Entry-sales_person",
-        "Customer-customer_ref_account"
+        "Customer-customer_ref_account",
+        "Item-old_location"
             ]
         ]
     ]}
