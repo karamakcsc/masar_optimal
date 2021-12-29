@@ -2,7 +2,7 @@
 frappe.ui.form.on("Sales Invoice","refresh", function(frm) {
      frm.toggle_display("pos_profile", false);
      frm.toggle_display("payment_schedule_section", false);
-     frm.toggle_display("section_break_49", false);
+     //frm.toggle_display("section_break_49", false);
      frm.toggle_display("sec_warehouse", false);
      frm.toggle_display("update_stock", false);
      frm.toggle_display("currency_and_price_list", false);
