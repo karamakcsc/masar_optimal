@@ -24,7 +24,7 @@ frappe.ui.form.on("Sales Invoice","refresh", function(frm) {
      frm.toggle_display("accounting_dimensions_section", false);
      frm.toggle_display("address_and_contact", false);
      frm.toggle_display("disable_rounded_total", false);
-     frm.toggle_display("set_posting_time", false);
+     //frm.toggle_display("set_posting_time", false);
 });
 
 frappe.ui.form.on("Sales Invoice",{ before_load:function(frm) {
@@ -40,7 +40,7 @@ frm.refresh_fields();
 frappe.ui.form.on("Sales Invoice","invoice_type", function(frm) {
 
 if (frm.doc.invoice_type == "Cash") {
-  frm.set_value('naming_series', 'ACC-SINV-CASH-.YYYY.-')
+  frm.set_value('naming_series', 'CASH-.YYYY.-')
   frm.set_value("is_pos",1);
   frm.set_value("price_type","Retail");
   refresh_field("naming_series");
@@ -53,7 +53,7 @@ if (frm.doc.invoice_type == "Cash") {
   });
   }
 else if (frm.doc.invoice_type == "Credit") {
-  frm.set_value('naming_series', 'ACC-SINV-CREDIT-.YYYY.-')
+  frm.set_value('naming_series', 'CREDIT-.YYYY.-')
   frm.set_value("is_pos",0);
   frm.set_value("customer","");
   frm.set_value("price_type","Wholesale");
@@ -173,40 +173,25 @@ frappe.ui.form.on("Sales Invoice Item","item_code", function(frm,cdt,cdn) {
     }
 });
 
-frappe.ui.form.on("Sales Invoice Item","item_code", function(frm,cdt,cdn) {
-  var d = locals[cdt][cdn];
-  if (d.item_code)  {
-    // frappe.call({ method:"frappe.client.get_list",
-    //     args:{
-    //       doctype: "Item Location",
-    //       fields: ["item_location"],
-    //       filters:[
-    //         ["parent","=", frm.doc.item]
-    //       ],
-    //       limit_page_length: 1
-    //     },
-    //         callback: function(data){
-    //           d.item_location = data.message.item_location}
-    //   });
-
-
-
-      frappe.call({
-            method: "frappe.client.get_list",
-            args: {doctype: "Item Location",
-                   parent: "Item",
-                   fields: ["item_code"],
-                   filters: {
-                     'parent': d.item_code,
-                   }
-          },
-            callback: function (data) {
-              d.item_location = data.message.item_location
-          }
-        });
-
-    }
-});
+// frappe.ui.form.on("Sales Invoice Item","item_code", function(frm,cdt,cdn) {
+//   var d = locals[cdt][cdn];
+//   if (d.item_code)  {
+//
+//       frappe.call({
+//             "method": "frappe.client.get_list",
+//             args: {doctype: "Item Location",
+//                    filters: {
+//                      'parent': frm.doc.item,
+//                      'item_location': frm.doc.item_locations
+//                    }
+//           },
+//             callback: function (data) {
+//               d.item_location = data.message.item_location
+//           }
+//         });
+//
+//     }
+// });
 
 frappe.ui.form.on("Sales Invoice", "on_submit", function(frm) {
      //cur_frm.add_custom_button(__("Direct Print"), function() {
@@ -221,40 +206,31 @@ frappe.ui.form.on("Sales Invoice", {
   }
 });
 
+// frappe.ui.form.on("Sales Invoice","customer", function(frm) {
+//     frappe.call({
+//       method: "frappe.client.get",
+//       args: {
+//           name: frm.doc.customer,
+//           doctype: "Customer"
+//       },
+//       callback(r) {
+//           if (r.message) {
+//              var sales_team = r.message.sales_team
+//              for(var i in sales_team) {
+//                   frm.set_value('sales_person', sales_team[i].sales_person);
+//               }
+//             }
+//           }
+//   });
+// });
 
-frappe.ui.form.on("Sales Invoice","customer", function(frm) {
-    frappe.call({
-      method: "frappe.client.get",
-      args: {
-          name: frm.doc.customer,
-          doctype: "Customer"
-      },
-      callback(r) {
-          if (r.message) {
-             var sales_team = r.message.sales_team
-             for(var i in sales_team) {
-                  frm.set_value('sales_man', sales_team[i].sales_person);
-              }
-            }
-          }
-  });
-});
 
-
-frappe.ui.form.on("Sales Invoice","customer", function(frm) {
-    frappe.call({
-      method: "frappe.client.get",
-      args: {
-          name: frm.doc.customer,
-          doctype: "Customer"
-      },
-      callback(r) {
-          if (r.message) {
-             var sales_team = r.message.sales_team
-             for(var i in sales_team) {
-                  frm.set_value('sales_man', sales_team[i].sales_person);
-              }
-            }
-          }
-  });
-});
+// frappe.ui.form.on("Sales Team", "sales_team_add", function(frm, cdt, cdn) {
+//     var d = locals[cdt][cdn];
+//
+//         if(frm.doc.cost_center != ""){
+//             d.cost_center = frm.doc.cost_center;
+//             d.customer_sub = frm.doc.customer_sub;
+//             d.project = frm.doc.project;
+//         }
+//   });
