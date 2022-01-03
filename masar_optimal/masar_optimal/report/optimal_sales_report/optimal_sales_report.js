@@ -37,6 +37,14 @@ frappe.query_reports["Optimal Sales Report"] = {
 								"reqd": 0,
 							},
 							{
+								"fieldname": "customer_name",
+								"label": __("Customer Name"),
+								"fieldtype": "Link",
+								"options": "Customer",
+								"width": 100,
+								"reqd": 0,
+							},
+							{
 								"fieldname": "customer_description",
 								"label": __("Customer Description"),
 								"fieldtype": "Data",
