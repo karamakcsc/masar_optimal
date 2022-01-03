@@ -14,17 +14,15 @@ def get_data(filters):
 	conditions = " AND 1=1 "
 	if(filters.get('inv_no')):conditions += f" AND tsi.name LIKE '%{filters.get('inv_no')}' "
 	if(filters.get('invoice_type')):conditions += f" AND tsi.invoice_type='{filters.get('invoice_type')}' "
-	if(filters.get('customer_name')):conditions += f" AND tsi.customer_name LIKE '%{filters.get('customer_name')}' "
+	if(filters.get('customer_description')):conditions += f" AND tsi.customer_description LIKE '%{filters.get('customer_description')}' "
 	if(filters.get('sales_person')):conditions += f" AND tst.sales_person='{filters.get('sales_person')}' "
-	if(filters.get('owner')):conditions += f" AND tsi.owner='{filters.get('owner')}' "
 	if(filters.get('is_return')):conditions += f" AND tsi.is_return='{filters.get('is_return')}' "
 	if(filters.get('status')):conditions += f" AND tsi.status='{filters.get('status')}' "
 
 	#SQL Query
-	data = frappe.db.sql(f"""Select tsi.name, tsi.invoice_type, tsi.customer_name, tsi.total, tsi.total_taxes_and_charges, tsi.grand_total,
-									tsi.posting_date, tsi.posting_time, tsi.is_return,
-									IF(ISNULL(tst.sales_person) =0 ,tst.sales_person ,''),tsi.status,
-								    tsi.owner
+	data = frappe.db.sql(f"""Select tsi.name, tsi.invoice_type, tsi.customer_description, tsi.total, tsi.total_taxes_and_charges, tsi.grand_total,
+									tsi.posting_date,tsi.is_return,
+									IF(ISNULL(tst.sales_person) =0 ,tst.sales_person ,''),tsi.status
 							FROM `tabSales Invoice` tsi
 							LEFT Join `tabSales Team` tst ON tsi.name =tst.parent and tst.parenttype = 'Sales Invoice'
 							WHERE (posting_date BETWEEN '{_from}' AND '{to}')
@@ -35,14 +33,14 @@ def get_columns():
 	return [
 	   "Name: Link/Sales Invoice:200",
 	   "Invoice Type: Data:100",
-	   "Customer Name: Link/Customer:200",
+	   "Customer Description: Data:200",
 	   "Total: Currency:120",
 	   "Total Tax: Currency:120",
 	   "Grand Total: Currency:120",
 	   "Posting Date: Date/Posting Date:120",
-	   "Posting Time: Time/Posting Time:100",
+	   #"Posting Time: Time/Posting Time:100",
 	   "Is Return: Check/Is Return:130",
 	   "Sales Person: Link/Sales Person:150",
 	   "Status:150",
-	   "User:150"
+	   #"User:150"
 	]
