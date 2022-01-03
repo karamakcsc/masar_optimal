@@ -21,7 +21,7 @@ def get_data(filters):
 	if(filters.get('status')):conditions += f" AND tsi.status='{filters.get('status')}' "
 
 	#SQL Query
-	data = frappe.db.sql(f"""Select tsi.name, tsi.invoice_type, tsi.customer_name, tsi.customer_description, tsi.total, tsi.total_taxes_and_charges, tsi.grand_total,
+	data = frappe.db.sql(f"""Select tsi.name, tsi.invoice_type, tsi.customer_name, tsi.customer_description, tsi.net_total, tsi.total_taxes_and_charges, tsi.grand_total,
 									tsi.posting_date,tsi.is_return,
 									IF(ISNULL(tst.sales_person) =0 ,tst.sales_person ,''),tsi.status
 							FROM `tabSales Invoice` tsi
