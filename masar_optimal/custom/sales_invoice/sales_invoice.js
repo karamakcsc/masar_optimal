@@ -203,6 +203,7 @@ frappe.ui.form.on("Sales Invoice", "on_submit", function(frm) {
 frappe.ui.form.on("Sales Invoice", {
   onload: function(frm) {
     frm.set_value("update_stock",1);
+    frm.set_value("set_posting_time",1);
   }
 });
 
