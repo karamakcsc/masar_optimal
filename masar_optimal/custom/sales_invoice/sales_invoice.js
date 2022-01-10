@@ -90,6 +90,17 @@ frappe.ui.form.on("Sales Invoice", "customer", function(frm) {
   frm.refresh_field("customer");
 });
 
+frappe.ui.form.on("Sales Invoice", "refresh", function(frm) {
+  if (frm.doc.invoice_type == "Cash" && frm.doc.is_return == 1) {
+      frm.set_value('naming_series', 'RET-CASH-.YYYY.-')
+    }
+  else if (frm.doc.invoice_type == "Credit" && frm.doc.is_return == 1) {
+    frm.set_value('naming_series', 'RET-CREDIT-.YYYY.-')
+      }
+  frm.refresh_field("naming_series");
+});
+
+
 
 //Set Price based on item code
 frappe.ui.form.on("Sales Invoice Item","item_code", function(frm,cdt,cdn) {
