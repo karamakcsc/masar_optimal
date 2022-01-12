@@ -13,7 +13,7 @@ def get_data(filters):
     #Conditions
 	conditions = " AND 1=1 "
 	if(filters.get('ref_no')):conditions += f" AND tpe.name LIKE '%{filters.get('ref_no')}' "
-	#if(filters.get('payment_type')):conditions += f" AND payment_type='{filters.get('payment_type')}' "
+	if(filters.get('payment_type')):conditions += f" AND payment_type='{filters.get('payment_type')}' "
 	#if(filters.get('party_type')):conditions += f" AND party_type='{filters.get('party_type')}' "
 	if(filters.get('party')):conditions += f" AND tpe.party LIKE '%{filters.get('party')}' "
 	if(filters.get('mode_of_payment')):conditions += f" AND tpe.mode_of_payment='{filters.get('mode_of_payment')}' "
@@ -29,7 +29,7 @@ def get_data(filters):
 	# 						WHERE (posting_date BETWEEN '{_from}' AND '{to}')
 	# 						 {conditions};""")
 
-	data = frappe.db.sql(f"""SELECT tpe.ref_number, tpe.party, tpe.mode_of_payment, paid_amount, tpe.total_cheques_amount, tst.sales_person, tpe.status, tpe.owner
+	data = frappe.db.sql(f"""SELECT tpe.ref_number, tpe.payment_type, tpe.party, tpe.mode_of_payment, paid_amount, tpe.total_cheques_amount, tst.sales_person, tpe.status, tpe.owner
 							FROM `tabPayment Entry` tpe
 							LEFT Join `tabSales Team` tst ON tpe.party_name = tst.parent
 							WHERE (posting_date BETWEEN '{_from}' AND '{to}')
@@ -39,7 +39,7 @@ def get_data(filters):
 def get_columns():
 	return [
 	   "Reference Number: Data:200",
-	   # "Payment Type: Data:120",
+	   "Payment Type: Data:120",
 	   # "Party Type: Data:150",
 	   "Party Name: Link/Customer:200",
 	   "Mode of Payment: Data:100",

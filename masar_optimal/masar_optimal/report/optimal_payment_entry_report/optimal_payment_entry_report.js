@@ -28,14 +28,14 @@ frappe.query_reports["Optimal Payment Entry Report"] = {
 								"reqd": 1,
 								"default": dateutil.year_end()
 							},
-						  // {
-							// 	"fieldname": "payment_type",
-							// 	"label": __("Payment Type"),
-							// 	"fieldtype": "Select",
-							// 	"options": ["\n","Receive","Pay","Internal Transfer"],
-							// 	"width": 100,
-							// 	"reqd": 0,
-							// },
+						  {
+								"fieldname": "payment_type",
+								"label": __("Payment Type"),
+								"fieldtype": "Select",
+								"options": ["\n","Receive","Pay","Internal Transfer"],
+								"width": 100,
+								"reqd": 0,
+							},
 							// {
 							// 	"fieldname": "party_type",
 							// 	"label": __("Party Type"),
