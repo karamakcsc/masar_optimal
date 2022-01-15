@@ -19,4 +19,21 @@ def get_last_price(item_code):
                             LIMIT 1""" %(item_code), as_dict=True
                             )
 
-    return last_price[0].rate
+    if last_price:
+        return last_price[0].rate
+    else:
+        return
+
+
+
+@frappe.whitelist()
+def get_default_location(item_code):
+    dloc = frappe.db.sql("""
+                            Select item_location
+                            From `tabItem Location` til
+                            Where  is_default = 1 and parent = '%s'
+                            LIMIT 1""" %(item_code), as_dict=True)
+    if dloc:
+        return dloc[0].item_location
+    else:
+        return

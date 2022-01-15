@@ -213,7 +213,9 @@ fixtures = [
         "Payment Entry-ref_number",
         "Payment Entry-sales_person",
         "Customer-customer_ref_account",
-        "Item-old_location"
+        "Item-old_location",
+        "Sales Invoice-sales_man",
+        "Sales Invoice Item-item_location"
             ]
         ]
     ]}

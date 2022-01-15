@@ -102,3 +102,24 @@ frm.refresh_fields();
 }
 }
 });
+
+// frappe.ui.form.on("Item","refresh", function(frm) {
+
+//     frappe.call({
+//       method: "frappe.client.get",
+//       args: {
+//           doctype: "Bin",
+//           'filters': {'name': item_code},
+//           'fieldname': ['valuation_rate']
+//       },
+//       callback(r) {
+//           if (r.message) {
+//              var item_code = r.message.item_code
+//              for(var i in valuation_rate) {
+//                   frm.set_value('valuation_rate', valuation_rate[i].valuation_rate);
+//               }
+//             }
+//           }
+//   });
+//   frm.refresh_field("valuation_rate");
+// });

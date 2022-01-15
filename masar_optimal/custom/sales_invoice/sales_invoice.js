@@ -184,8 +184,29 @@ frappe.ui.form.on("Sales Invoice Item","item_code", function(frm,cdt,cdn) {
     }
 });
 
+frappe.ui.form.on("Sales Invoice Item","item_code", function(frm,cdt,cdn) {
+
+  var d = locals[cdt][cdn];
+
+  if (d.item_code)  {
+    frappe.call({
+          "method": "masar_optimal.custom.sales_invoice.sales_invoice.get_default_location",
+          args: {item_code: d.item_code},
+          callback: function (dloc) {
+            d.item_location = dloc.message
+          }
+        });
+    }
+});
+
+
+
+
+
 // frappe.ui.form.on("Sales Invoice Item","item_code", function(frm,cdt,cdn) {
+//
 //   var d = locals[cdt][cdn];
+//   frappe.msgprint(d.item_code)
 //   if (d.item_code)  {
 //
 //       frappe.call({
@@ -218,31 +239,20 @@ frappe.ui.form.on("Sales Invoice", {
   }
 });
 
-// frappe.ui.form.on("Sales Invoice","customer", function(frm) {
-//     frappe.call({
-//       method: "frappe.client.get",
-//       args: {
-//           name: frm.doc.customer,
-//           doctype: "Customer"
-//       },
-//       callback(r) {
-//           if (r.message) {
-//              var sales_team = r.message.sales_team
-//              for(var i in sales_team) {
-//                   frm.set_value('sales_person', sales_team[i].sales_person);
-//               }
-//             }
-//           }
-//   });
-// });
-
-
-// frappe.ui.form.on("Sales Team", "sales_team_add", function(frm, cdt, cdn) {
-//     var d = locals[cdt][cdn];
-//
-//         if(frm.doc.cost_center != ""){
-//             d.cost_center = frm.doc.cost_center;
-//             d.customer_sub = frm.doc.customer_sub;
-//             d.project = frm.doc.project;
-//         }
-//   });
+frappe.ui.form.on("Sales Invoice","customer", function(frm) {
+    frappe.call({
+      method: "frappe.client.get",
+      args: {
+          name: frm.doc.customer,
+          doctype: "Customer"
+      },
+      callback(r) {
+          if (r.message) {
+             var sales_team = r.message.sales_team
+             for(var i in sales_team) {
+                  frm.set_value('sales_man', sales_team[i].sales_person);
+              }
+            }
+          }
+  });
+});
