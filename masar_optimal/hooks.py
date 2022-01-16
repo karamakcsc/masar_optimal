@@ -215,7 +215,9 @@ fixtures = [
         "Customer-customer_ref_account",
         "Item-old_location",
         "Sales Invoice-sales_man",
-        "Sales Invoice Item-item_location"
+        "Sales Invoice Item-item_location",
+        "Sales Team-id_sales_person",
+        "Sales Person-id_sales_person"
             ]
         ]
     ]}
