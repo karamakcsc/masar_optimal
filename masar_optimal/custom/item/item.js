@@ -103,23 +103,38 @@ frm.refresh_fields();
 }
 });
 
-// frappe.ui.form.on("Item","refresh", function(frm) {
+frappe.ui.form.on("Item","refresh", function(frm) {
 
-//     frappe.call({
-//       method: "frappe.client.get",
-//       args: {
-//           doctype: "Bin",
-//           'filters': {'name': item_code},
-//           'fieldname': ['valuation_rate']
-//       },
-//       callback(r) {
-//           if (r.message) {
-//              var item_code = r.message.item_code
-//              for(var i in valuation_rate) {
-//                   frm.set_value('valuation_rate', valuation_rate[i].valuation_rate);
-//               }
-//             }
-//           }
-//   });
+    frappe.call({
+      method: "frappe.client.get",
+      args: {
+          doctype: "Bin",
+          'filters': {'name': item_code},
+          'fieldname': ['valuation_rate']
+      },
+      callback(r) {
+          if (r.message) {
+             var item_code = r.message.item_code
+
+                  frm.set_value('current_valuation_rate') = r.valuation_rate;
+              }
+            }
+  });
+  frm.refresh_field("current_valuation_rate");
+  });
 //   frm.refresh_field("valuation_rate");
+// });
+// frappe.ui.form.on("Item","refresh", function(frm,cdt,cdn) {
+//
+//   var d = locals[cdt][cdn];
+//
+//   if (d.item_code)  {
+//     frappe.call({
+//           "method": "masar_optimal.custom.item.item.get_current_valuation_rate",
+//           args: {item_code: d.item_code},
+//           callback: function (cvr) {
+//             d.current_valuation_rate = cvr.message
+//           }
+//         });
+//     }
 // });

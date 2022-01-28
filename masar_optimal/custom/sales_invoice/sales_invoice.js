@@ -184,21 +184,20 @@ frappe.ui.form.on("Sales Invoice Item","item_code", function(frm,cdt,cdn) {
     }
 });
 
-// frappe.ui.form.on("Sales Invoice Item","item_code", function(frm,cdt,cdn) {
-//
-//   var d = locals[cdt][cdn];
-//
-//   if (d.item_code)  {
-//     frappe.call({
-//           "method": "masar_optimal.custom.sales_invoice.sales_invoice.get_default_location",
-//           args: {item_code: d.item_code},
-//           callback: function (dloc) {
-//             d.item_location = dloc.message
-//           }
-//         });
-//     }
-// });
+frappe.ui.form.on("Sales Invoice Item","item_code", function(frm,cdt,cdn) {
 
+  var d = locals[cdt][cdn];
+
+  if (d.item_code)  {
+    frappe.call({
+          "method": "masar_optimal.custom.sales_invoice.sales_invoice.get_default_location",
+          args: {item_code: d.item_code},
+          callback: function (dloc) {
+            d.item_location = dloc.message
+          }
+        });
+    }
+});
 
 frappe.ui.form.on("Sales Invoice", "on_submit", function(frm) {
      //cur_frm.add_custom_button(__("Direct Print"), function() {

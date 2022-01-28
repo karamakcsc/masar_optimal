@@ -1,0 +1,83 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:maintenance_person_name",
+ "creation": "2022-01-28 06:31:51.463722",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "name_and_employee_id_section",
+  "id_maintenance_person",
+  "maintenance_person_name",
+  "enabled",
+  "column_break_5",
+  "employee",
+  "department"
+ ],
+ "fields": [
+  {
+   "fieldname": "name_and_employee_id_section",
+   "fieldtype": "Section Break",
+   "label": "Name and Employee ID",
+   "options": "icon-user"
+  },
+  {
+   "fieldname": "id_maintenance_person",
+   "fieldtype": "Data",
+   "label": "ID"
+  },
+  {
+   "fieldname": "maintenance_person_name",
+   "fieldtype": "Data",
+   "label": "Maintenance Person Name",
+   "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-01-28 06:41:08.939940",
+ "modified_by": "Administrator",
+ "module": "Masar Optimal",
+ "name": "Maintenance Person",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

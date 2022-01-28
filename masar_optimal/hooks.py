@@ -217,7 +217,17 @@ fixtures = [
         "Sales Invoice-sales_man",
         "Sales Invoice Item-item_location",
         "Sales Team-id_sales_person",
-        "Sales Person-id_sales_person"
+        "Sales Person-id_sales_person",
+        "Sales Order-maintenance",
+        "Sales Order-maintenance_type",
+        "Sales Order-plate_number",
+        "Sales Order-vin_no",
+        "Sales Order-odometer",
+        "Sales Order-column_break_44",
+        "Sales Order-maintenance_team",
+        "Sales Order-maintenance_person",
+        "Sales Order-maintenance_notes",
+        "Sales Order-maintenance_team_note"
             ]
         ]
     ]}

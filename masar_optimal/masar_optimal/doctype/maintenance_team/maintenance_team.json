@@ -1,0 +1,40 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-01-28 06:39:53.446992",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "maintenance_person",
+  "id_maintenance_person"
+ ],
+ "fields": [
+  {
+   "fieldname": "maintenance_person",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Maintenance Person",
+   "options": "Maintenance Person"
+  },
+  {
+   "fetch_from": "maintenance_person.id_maintenance_person",
+   "fieldname": "id_maintenance_person",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "ID Maintenance Person"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-01-28 06:49:52.429997",
+ "modified_by": "Administrator",
+ "module": "Masar Optimal",
+ "name": "Maintenance Team",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
