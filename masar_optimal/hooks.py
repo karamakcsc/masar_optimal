@@ -227,7 +227,8 @@ fixtures = [
         "Sales Order-maintenance_team",
         "Sales Order-maintenance_person",
         "Sales Order-maintenance_notes",
-        "Sales Order-maintenance_team_note"
+        "Sales Order-maintenance_team_note",
+        "Item-current_valuation_rate"
             ]
         ]
     ]}

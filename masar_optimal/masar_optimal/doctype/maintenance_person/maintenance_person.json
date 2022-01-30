@@ -25,7 +25,9 @@
   {
    "fieldname": "id_maintenance_person",
    "fieldtype": "Data",
-   "label": "ID"
+   "in_list_view": 1,
+   "label": "ID",
+   "reqd": 1
   },
   {
    "fieldname": "maintenance_person_name",
@@ -58,7 +60,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-28 06:41:08.939940",
+ "modified": "2022-01-30 05:03:26.723885",
  "modified_by": "Administrator",
  "module": "Masar Optimal",
  "name": "Maintenance Person",
