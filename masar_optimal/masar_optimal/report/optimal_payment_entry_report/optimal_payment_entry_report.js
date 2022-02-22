@@ -56,7 +56,7 @@ frappe.query_reports["Optimal Payment Entry Report"] = {
 								"fieldname": "mode_of_payment",
 								"label": __("Mode of Payment"),
 								"fieldtype": "Select",
-								"options": ["\n","Cash","Cheque","Transfer"],
+								"options": ["\n","Cash","Cheque","Promissory","Cash&Cheque","Transfer"],
 								"width": 100,
 								"reqd": 0,
 							},
