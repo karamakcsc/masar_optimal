@@ -43,52 +43,53 @@ if (frm.doc.invoice_type == "Cash") {
   frm.set_value('naming_series', 'CASH-.YYYY.-')
   frm.set_value("is_pos",1);
   frm.set_value("price_type","Retail");
+   frm.set_value("customer","Guest");
   refresh_field("naming_series");
-  frm.set_query("customer", function() {
-    return {
-      filters: [
-        ["Customer","is_pos_customer", "in", ["1"]]
-      ]
-    }
-  });
+  // frm.set_query("customer", function() {
+  //   return {
+  //     filters: [
+  //       ["Customer","is_pos_customer", "=", "Yes"]
+  //     ]
+  //   }
+  // });
   }
 else if (frm.doc.invoice_type == "Credit") {
   frm.set_value('naming_series', 'CREDIT-.YYYY.-')
   frm.set_value("is_pos",0);
-  frm.set_value("customer","");
+  // frm.set_value("customer","");
   frm.set_value("price_type","Wholesale");
   refresh_field("naming_series");
-  frm.set_query("customer", function() {
-    return {
-      filters: [
-        ["Customer","is_pos_customer", "in", ["0"]]
-      ]
-    }
-  });
+  // frm.set_query("customer", function() {
+  //   return {
+  //     filters: [
+  //       ["Customer","is_pos_customer", "=", "No"]
+  //     ]
+  //   }
+  // });
 }
 });
 
-frappe.ui.form.on("Sales Invoice", "customer", function(frm) {
-  if (frm.doc.invoice_type == "Cash") {
-      frm.set_query("customer", function() {
-      return {
-        filters: [
-          ["Customer","is_pos_customer", "in", ["1"]]
-        ]
-      }
-    });
-    }
-  else if (frm.doc.invoice_type == "Credit") {
-    frm.set_query("customer", function() {
-      return {
-        filters: [
-          ["Customer","is_pos_customer", "in", ["0"]]
-        ]
-      }
-    });
-  }
-  frm.refresh_field("customer");
-});
+// frappe.ui.form.on("Sales Invoice", "customer", function(frm) {
+//   if (frm.doc.invoice_type == "Cash") {
+//       frm.set_query("customer", function() {
+//       return {
+//         filters: [
+//           ["Customer","is_pos_customer", "in", ["1"]]
+//         ]
+//       }
+//     });
+//     }
+//   else if (frm.doc.invoice_type == "Credit") {
+//     frm.set_query("customer", function() {
+//       return {
+//         filters: [
+//           ["Customer","is_pos_customer", "in", ["0"]]
+//         ]
+//       }
+//     });
+//   }
+//   frm.refresh_field("customer");
+// });
 
 frappe.ui.form.on("Sales Invoice", "refresh", function(frm) {
   if (frm.doc.invoice_type == "Cash" && frm.doc.is_return == 1) {
@@ -100,7 +101,35 @@ frappe.ui.form.on("Sales Invoice", "refresh", function(frm) {
   frm.refresh_field("naming_series");
 });
 
+frappe.ui.form.on("Sales Invoice", "scan_barcode", function(frm) {
+  $.each(frm.doc.items, function(i, d) {
+  if (d.item_code)  {
+    if(frm.doc.price_type=="Retail"){
+      frappe.call({
+            "method": "frappe.client.get",
+            args: {doctype: "Item",name: d.item_code},
+            callback: function (data) {d.rate = flt(data.message.retail_price)}
+          });
+        }
+    if(frm.doc.price_type=="Wholesale"){
+      frappe.call({
+            "method": "frappe.client.get",
+            args: {doctype: "Item",name: d.item_code},
+            callback: function (data) {d.rate = flt(data.message.wholesale_price)}
+          });
+        }
 
+    if(frm.doc.price_type=="Last Price"){
+      frappe.call({
+            "method": "masar_optimal.custom.sales_invoice.sales_invoice.get_last_price",
+            args: {item_code: d.item_code},
+            callback: function (last_price) {
+            d.rate = flt(last_price.message)}
+          });
+        }
+    }
+    });
+  });
 
 //Set Price based on item code
 frappe.ui.form.on("Sales Invoice Item","item_code", function(frm,cdt,cdn) {
@@ -164,7 +193,7 @@ frappe.ui.form.on("Sales Invoice","price_type", function(frm) {
     });
 
   }
-
+refresh_field("items");
 });
 
 //Fetch Retail and wholesale price after aselecting item code
